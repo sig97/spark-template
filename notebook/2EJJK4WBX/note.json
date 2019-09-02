@@ -1,0 +1,424 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md Spark test",
+      "user": "anonymous",
+      "dateUpdated": "2019-08-29 09:57:55.110",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSpark test\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567000314819_1584864694",
+      "id": "20190828-135154_1708005386",
+      "dateCreated": "2019-08-28 13:51:54.821",
+      "dateStarted": "2019-08-29 09:57:55.115",
+      "dateFinished": "2019-08-29 09:57:55.132",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import java.util.Properties\n\nval jdbcUrl \u003d \"jdbc:mysql://mysql:3306\"\n\nval connectionProperties \u003d new Properties()\n    connectionProperties.put(\"user\", \"user\")\n    connectionProperties.put(\"password\", \"password\")\n    \nval dumpFileName \u003d \"/data/client_dump\"\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-02 11:43:45.359",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import java.util.Properties\njdbcUrl: String \u003d jdbc:mysql://mysql:3306\nconnectionProperties: java.util.Properties \u003d {user\u003duser, password\u003dpassword}\ndumpFileName: String \u003d /data/client_dump\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567077154679_45465564",
+      "id": "20190829-111234_1357326004",
+      "dateCreated": "2019-08-29 11:12:34.679",
+      "dateStarted": "2019-09-02 11:43:45.453",
+      "dateFinished": "2019-09-02 11:43:55.007",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.sql.SaveMode\n\nval df \u003d spark.read\n  .jdbc(url \u003d jdbcUrl,\n    table \u003d \"db.client\",\n    properties \u003d connectionProperties)\n\ndf.show(20, false)\n\n// df.write\n//     .mode(SaveMode.Overwrite)\n//     .parquet(dumpFileName)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-02 11:43:57.268",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+---------+------------+---+\n|id |firstName|lastName    |age|\n+---+---------+------------+---+\n|1  |Sharyn   |Hane        |39 |\n|38 |Gilberto |Strosin     |60 |\n|35 |Abram    |Howe        |19 |\n|7  |Heriberto|Heidenreich |18 |\n|28 |Allena   |Treutel     |60 |\n|21 |Jorge    |Crooks      |38 |\n|8  |Mariano  |Dare        |79 |\n|39 |Rhett    |Bernier     |84 |\n|14 |Emmanuel |Reinger     |82 |\n|11 |Rayna    |Gutmann     |33 |\n|2  |Bernard  |Emard       |34 |\n|36 |Elinor   |Swift       |22 |\n|9  |Oda      |Waters      |30 |\n|24 |Ricky    |Kassulke    |61 |\n|31 |Tanner   |Stiedemann  |71 |\n|40 |Ramon    |Ondricka    |64 |\n|22 |Jacquelyn|Christiansen|52 |\n|29 |Dorcas   |Wuckert     |78 |\n|12 |Wm       |Leannon     |69 |\n|10 |Carrie   |Erdman      |71 |\n+---+---------+------------+---+\nonly showing top 20 rows\n\nimport org.apache.spark.sql.SaveMode\ndf: org.apache.spark.sql.DataFrame \u003d [id: bigint, firstName: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.17.0.3:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1567000321646_-590544094",
+      "id": "20190828-135201_1317386896",
+      "dateCreated": "2019-08-28 13:52:01.646",
+      "dateStarted": "2019-09-02 11:43:57.346",
+      "dateFinished": "2019-09-02 11:44:00.013",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val df \u003d spark.read.parquet(dumpFileName)\n    \ndf.show(10, false)\n\nval incrementId: (Int \u003d\u003e Int) \u003d (arg: Int) \u003d\u003e { arg + 1000}\nval idUdf \u003d udf(incrementId)\n\nval mappedDf \u003d df.withColumn(\"id\", idUdf($\"id\"))\n\nval joinedDf \u003d mappedDf.union(df)\n\njoinedDf.printSchema()\n\nz.show(joinedDf.select(\"firstName\", \"age\"))\n    \n// mappedDf.union(df).write\n//   .option(\"createTableColumnTypes\", \"id BIGINT, firstName VARCHAR(128), lastName VARCHAR(128), age INT\")\n//   .jdbc(jdbcUrl, \"db.client\", connectionProperties)    ",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-02 11:45:28.995",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 258.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "firstName",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "age",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "firstName": "string",
+                      "age": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stream"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 171.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+---------+--------+---+\n|id |firstName|lastName|age|\n+---+---------+--------+---+\n|1  |John     |Doe     |23 |\n+---+---------+--------+---+\n\nroot\n |-- id: long (nullable \u003d true)\n |-- firstName: string (nullable \u003d true)\n |-- lastName: string (nullable \u003d true)\n |-- age: integer (nullable \u003d true)\n\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "firstName\tage\nJohn\t23\nJohn\t23\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "df: org.apache.spark.sql.DataFrame \u003d [id: bigint, firstName: string ... 2 more fields]\nincrementId: Int \u003d\u003e Int \u003d \u003cfunction1\u003e\nidUdf: org.apache.spark.sql.expressions.UserDefinedFunction \u003d UserDefinedFunction(\u003cfunction1\u003e,IntegerType,Some(List(IntegerType)))\nmappedDf: org.apache.spark.sql.DataFrame \u003d [id: int, firstName: string ... 2 more fields]\njoinedDf: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] \u003d [id: bigint, firstName: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.17.0.3:4040/jobs/job?id\u003d5",
+            "http://172.17.0.3:4040/jobs/job?id\u003d6",
+            "http://172.17.0.3:4040/jobs/job?id\u003d7",
+            "http://172.17.0.3:4040/jobs/job?id\u003d8"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1567077024475_-4436079",
+      "id": "20190829-111024_682339685",
+      "dateCreated": "2019-08-29 11:10:24.475",
+      "dateStarted": "2019-09-02 11:45:29.038",
+      "dateFinished": "2019-09-02 11:45:29.637",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%jdbc\n\n-- drop table db.client;\n\n-- select count(1) from db.client;\n\n-- select * from db.client order by id;\n\n-- select * from db.client_map;\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-02 11:57:06.755",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "count(1)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "id",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "firstName",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "count(1)\n41\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1567000369491_1273869577",
+      "id": "20190828-135249_18707917",
+      "dateCreated": "2019-08-28 13:52:49.491",
+      "dateStarted": "2019-09-02 11:57:01.769",
+      "dateFinished": "2019-09-02 11:57:01.785",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%jdbc\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-08-29 10:08:46.477",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1567073326476_1689732808",
+      "id": "20190829-100846_359500848",
+      "dateCreated": "2019-08-29 10:08:46.476",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "spark/test",
+  "id": "2EJJK4WBX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "jdbc:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
