@@ -16,9 +16,8 @@ public class LocalConfiguration {
         Properties sqlProperties = new Properties();
         sqlProperties.put("user", "user");
         sqlProperties.put("password", "password");
-
-        System.getProperties().forEach((k,v)  -> System.out.println("key = " + k + " : " + v));
-//        System.out.println("MYSQL port: " + System.getProperty("mysql.exposedPort.tcp"));
+//        System.getProperties().forEach((k,v)  -> System.out.println("key = " + k + " : " + v));
+//        System.getenv().forEach((k,v)  -> System.out.println("key = " + k + " : " + v));
 
         return new LocalConfiguration("jdbc:mysql://localhost:3306", sqlProperties);
     }

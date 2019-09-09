@@ -1,5 +1,5 @@
 # _Spark-Template_
-A sample Apache Spark project using Scala and / or Java, built using gradle. Also included: Zeppelin notebook, DB server and sample scripts.  
+A sample Apache Spark project using Scala and / or Java, built using gradle. Also included: Zeppelin notebook, DB server and sample scripts, Elastic and Kibana servers.  
 
 
 ## Prerequisites
@@ -19,7 +19,7 @@ If running Docker from Ubuntu on Windows, make sure to update base mount point i
 `./gradlew run`
 ### Launch docker-compose services and run integration tests
 `./gradlew dockerTest`
-### Launch all docker services (DB and Zeppelin notebook)
+### Launch all docker services (DB, Zeppelin notebook, Elasticsearch and Kibana servers)
 `docker-compose up --build`
 ### Run integration tests using pre-running docker DB
 `./gradlew integrationTest`
@@ -29,6 +29,10 @@ If running Docker from Ubuntu on Windows, make sure to update base mount point i
 `docker-compose up --build`
 
 The notebook is located at http://localhost:9080/#/notebook/
+
+Elastic server is accessible at http://localhost:9200/
+
+Kibana UI is accessible at http://localhost:5601/
 
 ## Useful Links
 - [Spark Docs - Root Page](http://spark.apache.org/docs/latest/)

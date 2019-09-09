@@ -30,4 +30,41 @@ services:
         -Dspark.executor.memory=4g
     links:
       - mysql
+      - elasticsearch
+    network_mode: "bridge"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    container_name: elasticsearch1
+    environment:
+      - node.name=elasticsearch1
+      - cluster.initial_master_nodes=elasticsearch1
+      - cluster.name=docker-cluster
+#      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - network.host=_eth0_
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+#    volumes:
+#      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    network_mode: "bridge"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.1
+    environment:
+      SERVER_NAME: localhost
+      ELASTICSEARCH_HOSTS: http://elasticsearch1:9200/
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
     network_mode: "bridge"

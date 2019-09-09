@@ -112,7 +112,7 @@ task dockerTest(dependsOn: integrationTest) {
 }
 
 dockerCompose.isRequiredBy(dockerTest)
-dockerCompose.exposeAsSystemProperties(dockerTest)
+
 dockerCompose {
     useComposeFiles = ['docker-compose.yaml']
     startedServices = ['mysql']
